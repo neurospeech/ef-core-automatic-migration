@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <PackageId>NeuroSpeech.EFCoreAutomaticMigration.PostGreSql</PackageId>
+    <Authors>Akash Kava</Authors>
+    <Company>NeuroSpeech Technologies Pvt Ltd</Company>
+    <Product>EF Core Automatic Migration</Product>
+    <PackageLicenseUrl>https://github.com/neurospeech/ef-core-automatic-migration/main/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/neurospeech/ef-core-automatic-migration</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/neurospeech/ef-core-automatic-migration</RepositoryUrl>
+    <PackageTags>EF, Core, Live Migration, Automatic, Migration,PostGreSql</PackageTags>
+    <Version>1.0.2</Version>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <LangVersion>latest</LangVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="PostGreSqlServerMigrationHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="PostGreSqlServerMigrationHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.11" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="3.1.11" />
+    <PackageReference Include="TemplatedQuery.EFCore" Version="1.0.22" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NeuroSpeech.EFCoreAutomaticMigration\NeuroSpeech.EFCoreAutomaticMigration.csproj" />
+  </ItemGroup>
+
+</Project>
