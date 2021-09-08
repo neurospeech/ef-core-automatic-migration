@@ -368,6 +368,14 @@ namespace NeuroSpeech.EFCoreAutomaticMigration
             // create indexes...
             foreach (var index in table.EntityType.GetIndexes())
             {
+                // if all properties are part of primary key
+                // and it is unique
+                // we should ignore it...
+                if (index.IsUnique)
+                {
+                    if (index.Properties.All(x => x.IsKey()))
+                        continue;
+                }
                 var i = new SqlIndexEx(table, index, this);
                 EnsureCreated(i);
             }
