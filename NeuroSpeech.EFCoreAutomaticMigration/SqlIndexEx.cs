@@ -34,13 +34,20 @@ namespace NeuroSpeech.EFCoreAutomaticMigration
             if(this.Filter == null)
             {
                 // create filter based on nullable foreign key...
-                
-                if(index.DeclaringEntityType.BaseType != null)
+
+                var nullables = this.Properties.Where(x => x.IsColumnNullable() && x.IsForeignKey());
+                if (index.DeclaringEntityType.BaseType != null)
                 {
-                    this.Filter = "(" + string.Join(" AND ", 
-                        Properties.Select(x => modelMigration.Escape(x.ColumnName()) + " IS NOT NULL" )
-                        ) + ")";
+                    nullables = this.Properties;
+                } 
+                if(nullables.Any())
+                {
+                    var columns = string.Join(" AND ",
+                        nullables.Select(x => $"{modelMigration.Escape(x.ColumnName())} IS NOT NULL")
+                        );
+                    this.Filter = $"({columns})";
                 }
+                
             }
         }
 
