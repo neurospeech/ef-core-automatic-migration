@@ -9,7 +9,7 @@
       "setAllVariables": true
     },
     "publicReleaseRefSpec": [
-      "^refs/heads/main", // we release out of master
-      "^refs/tags/v\\d+\\.\\d+" // we also release tags starting with vN.N
+      "^refs/heads/main",
+      "^refs/tags/v\\d+\\.\\d+"
     ]
   }
